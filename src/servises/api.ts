@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const API_URL = "https://texnoark.ilyosbekdev.uz/auth/";
+// VITE orqali URL o'qiladi
+const API_URL = import.meta.env.VITE_API_URL;
 
 export const api = axios.create({
   baseURL: API_URL,
@@ -10,6 +11,7 @@ export const api = axios.create({
   },
 });
 
+// Foydalanuvchini ro'yxatdan o'tkazish
 export const signUpUser = async (data: Record<string, any>) => {
   return api.post("user/sign-up", data);
 };

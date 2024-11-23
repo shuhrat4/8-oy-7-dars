@@ -33,9 +33,11 @@ const SignUpForm: React.FC = () => {
       const response = await signUpUser(data);
       alert("Ro'yxatdan muvaffaqiyatli o'tdingiz!");
       console.log(response.data);
-    } catch (error) {
-      console.error("Ro'yxatdan o'tishda xatolik:", error);
-      alert("Xatolik yuz berdi. Qayta urinib ko'ring.");
+    } catch (error: any) {
+      console.error("Ro'yxatdan o'tishda xatolik:", error.response?.data || error.message);
+      alert(
+        error.response?.data?.message || "Xatolik yuz berdi. Qayta urinib ko'ring."
+      );
     }
   };
 
